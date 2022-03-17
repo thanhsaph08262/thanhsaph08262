@@ -1,0 +1,73 @@
+<div class="container">
+    {{productForm.value | json}}
+  </div>
+  <!-- <div class="container">
+    {{newProduct | json}}
+  </div> -->
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <form #productForm="ngForm"
+          (ngSubmit)="onSubmit(productForm.value)">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ten SP"
+              [(ngModel)]="name"
+              name="name"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Mo ta SP"
+              [(ngModel)]="description"
+              name="description"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Gia SP"
+              [(ngModel)]="price"
+              name="price"
+            />
+          </div>
+          <div class="form-group">
+            <button
+              class="btn btn-primary"
+              type="submit"
+            >Tao moi</button>
+          </div>
+        </form> 
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Ten SP</th>
+              <th>Mo ta</th>
+              <th>Gia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of product">
+              <td>{{item.name}}</td>
+              <td>{{item.description}}</td>
+              <td>{{item.price}}</td>
+              <td><button
+                class="btn btn-danger"
+                (click)="remove(item.id)"
+                >Delete</button>
+                <button class="btn btn-success" (click)="onEdit(item)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
